@@ -20,7 +20,7 @@
 
 import urllib.request,json,notify2,time
 notify2.init('Hackerspace State')
-url = 'https://status.stratum0.org/status.json' #link to Space API. This Links as an Example
+url = 'https://portal.hsbne.org/api/spacedirectory/' #link to Space API. This Links as an Example
 state = False
 rerun = True
 req = urllib.request.Request(url)
@@ -28,9 +28,10 @@ r = urllib.request.urlopen(req).read()
 cont = json.loads(r.decode('utf-8'))
 while rerun is True:
     while (state == (cont['state']['open'])) is True:
-        req
-        cont
-        #print((cont['state']['open'])) #for debugging
+        req = urllib.request.Request(url)
+        urllib.request.urlopen(req).read()
+        json.loads(r.decode('utf-8'))
+        print((cont['state']['open'])) #for debugging
         time.sleep(5)
         continue
     else:
@@ -47,9 +48,3 @@ while rerun is True:
         #print('Closed Notify') #for debugging
         time.sleep(2)
         n.show()
-
-
-
-
-
-
